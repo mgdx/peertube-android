@@ -17,6 +17,10 @@
  */
 package net.schueller.peertube.network;
 
+import android.content.Context;
+import android.content.Intent;
+import info.guardianproject.netcipher.client.StrongOkHttpClientBuilder;
+import info.guardianproject.netcipher.proxy.OrbotHelper;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -26,19 +30,35 @@ public class RetrofitInstance {
     private static Retrofit retrofit;
     private static String baseUrl;
 
-    public static Retrofit getRetrofitInstance(String newBaseUrl) {
+    public static Retrofit getRetrofitInstance(String newBaseUrl, Context context) {
         if (retrofit == null || !newBaseUrl.equals(baseUrl)) {
             baseUrl = newBaseUrl;
 
-            OkHttpClient.Builder okhttpClientBuilder = new OkHttpClient.Builder();
+            OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder()
+                    .addInterceptor(new AuthorizationInterceptor());
 
-            okhttpClientBuilder.addInterceptor(new AuthorizationInterceptor());
+            // TODO: add Tor support
+            Intent statusIntent = new Intent();
+            statusIntent.putExtra(OrbotHelper.EXTRA_STATUS, OrbotHelper.STATUS_OFF);
 
-            retrofit = new retrofit2.Retrofit.Builder()
-                    .client(okhttpClientBuilder.build())
-                    .baseUrl(baseUrl)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
+            try {
+
+                OkHttpClient client = StrongOkHttpClientBuilder
+                        .forMaxSecurity(context)
+                        .withWeakCiphers()
+                        .applyTo(okHttpClientBuilder, statusIntent)
+                        .build();
+
+                retrofit = new retrofit2.Retrofit.Builder()
+                        .client(client)
+                        .baseUrl(baseUrl)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
         return retrofit;
     }

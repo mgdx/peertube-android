@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "net.schueller.peertube"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1029
         versionName "1.0.29"
@@ -31,6 +31,8 @@ android {
             implementation 'com.mikepenz:fontawesome-typeface:5.3.1.1@aar'
 
             // http client / REST
+            implementation 'info.guardianproject.netcipher:netcipher:2.0.0-beta1'
+            implementation 'info.guardianproject.netcipher:netcipher-okhttp3:2.0.0-alpha1'
             implementation 'com.squareup.okhttp3:okhttp:3.12.1'
             implementation 'com.squareup.retrofit2:retrofit:2.5.0'
 

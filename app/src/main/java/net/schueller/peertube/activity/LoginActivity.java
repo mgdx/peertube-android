@@ -112,7 +112,7 @@ public class LoginActivity extends CommonActivity {
 
         String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
 
-        AuthenticationService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(AuthenticationService.class);
+        AuthenticationService service = RetrofitInstance.getRetrofitInstance(apiBaseURL, this).create(AuthenticationService.class);
 
         Call<OauthClient> call = service.getOauthClientLocal();
 

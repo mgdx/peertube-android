@@ -118,7 +118,7 @@ public class MeActivity extends CommonActivity {
 
         String apiBaseURL = APIUrlHelper.getUrlWithVersion(this);
 
-        GetUserService service = RetrofitInstance.getRetrofitInstance(apiBaseURL).create(GetUserService.class);
+        GetUserService service = RetrofitInstance.getRetrofitInstance(apiBaseURL, this).create(GetUserService.class);
 
         Call<Me> call = service.getMe();
 

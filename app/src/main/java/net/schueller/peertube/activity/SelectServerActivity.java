@@ -21,18 +21,12 @@ import android.widget.Toast;
 
 import net.schueller.peertube.R;
 import net.schueller.peertube.adapter.ServerAdapter;
-import net.schueller.peertube.adapter.VideoAdapter;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.model.ServerList;
-import net.schueller.peertube.model.VideoList;
 import net.schueller.peertube.network.GetServerListDataService;
-import net.schueller.peertube.network.GetVideoDataService;
 import net.schueller.peertube.network.RetrofitInstance;
 
 import java.util.ArrayList;
-
-import static net.schueller.peertube.helper.Constants.DEFAULT_THEME;
-import static net.schueller.peertube.helper.Constants.THEME_PREF_KEY;
 
 public class SelectServerActivity extends AppCompatActivity {
 
@@ -133,7 +127,7 @@ public class SelectServerActivity extends AppCompatActivity {
         isLoading = true;
 
         GetServerListDataService service = RetrofitInstance.getRetrofitInstance(
-                APIUrlHelper.getServerIndexUrl(SelectServerActivity.this)
+                APIUrlHelper.getServerIndexUrl(SelectServerActivity.this), this
         ).create(GetServerListDataService.class);
 
 
