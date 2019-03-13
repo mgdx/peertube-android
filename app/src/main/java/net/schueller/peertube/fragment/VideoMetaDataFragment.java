@@ -34,6 +34,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.cast.framework.CastButtonFactory;
+import com.google.android.gms.cast.framework.CastContext;
+import com.google.android.gms.cast.framework.CastState;
+import com.google.android.gms.cast.framework.CastStateListener;
 import com.mikepenz.iconics.Iconics;
 import com.squareup.picasso.Picasso;
 
@@ -55,6 +59,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.mediarouter.app.MediaRouteButton;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -256,6 +261,24 @@ public class VideoMetaDataFragment extends Fragment {
             videoOptionsFragment.show(getActivity().getSupportFragmentManager(),
                     VideoOptionsFragment.TAG);
         });
+
+        // cast button
+        MediaRouteButton mMediaRouteButton = activity.findViewById(R.id.exo_media_route_button);
+        CastButtonFactory.setUpMediaRouteButton(context.getApplicationContext(), mMediaRouteButton);
+        CastContext castContext = CastContext.getSharedInstance(context);
+
+        if(castContext.getCastState() != CastState.NO_DEVICES_AVAILABLE)
+            mMediaRouteButton.setVisibility(View.VISIBLE);
+
+        castContext.addCastStateListener(state -> {
+            if (state == CastState.NO_DEVICES_AVAILABLE)
+                mMediaRouteButton.setVisibility(View.GONE);
+            else {
+                if (mMediaRouteButton.getVisibility() == View.GONE)
+                    mMediaRouteButton.setVisibility(View.VISIBLE);
+            }
+        });
+
 
     }
 

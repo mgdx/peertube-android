@@ -10,6 +10,26 @@
     android:orientation="vertical"
     tools:targetApi="28">
 
+    <FrameLayout
+        android:layout_width="96dp"
+        android:layout_height="64dp"
+        android:layout_gravity="end">
+
+    <FrameLayout
+        android:id="@+id/exo_cast_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="start">
+
+        <androidx.mediarouter.app.MediaRouteButton
+            android:id="@+id/exo_media_route_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:mediaRouteTypes="user"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
         <FrameLayout
             android:id="@+id/exo_more_button"
             android:layout_width="32dp"
@@ -29,6 +49,7 @@
 
         </FrameLayout>
 
+    </FrameLayout>
 
 
     <Space
