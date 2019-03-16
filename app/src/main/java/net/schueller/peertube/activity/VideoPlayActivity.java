@@ -36,6 +36,8 @@ import android.widget.FrameLayout;
 
 import android.widget.RelativeLayout;
 
+import com.google.android.gms.cast.framework.CastContext;
+
 import net.schueller.peertube.R;
 import net.schueller.peertube.fragment.VideoMetaDataFragment;
 import net.schueller.peertube.fragment.VideoPlayerFragment;
@@ -53,10 +55,14 @@ public class VideoPlayActivity extends AppCompatActivity {
 
     private static final String TAG = "VideoPlayActivity";
 
+    public CastContext mCastContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // prepare cast service
+        mCastContext = CastContext.getSharedInstance(this.getApplicationContext());
 
         // Set theme
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);

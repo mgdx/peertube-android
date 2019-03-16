@@ -34,6 +34,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.exoplayer2.Player;
+import com.google.android.exoplayer2.ext.cast.CastPlayer;
 import com.google.android.gms.cast.framework.CastButtonFactory;
 import com.google.android.gms.cast.framework.CastContext;
 import com.google.android.gms.cast.framework.CastState;
@@ -42,6 +44,7 @@ import com.mikepenz.iconics.Iconics;
 import com.squareup.picasso.Picasso;
 
 import net.schueller.peertube.R;
+import net.schueller.peertube.activity.VideoPlayActivity;
 import net.schueller.peertube.helper.APIUrlHelper;
 import net.schueller.peertube.helper.MetaDataHelper;
 import net.schueller.peertube.intents.Intents;
@@ -76,7 +79,6 @@ public class VideoMetaDataFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_video_meta, container, false);
@@ -265,17 +267,29 @@ public class VideoMetaDataFragment extends Fragment {
         // cast button
         MediaRouteButton mMediaRouteButton = activity.findViewById(R.id.exo_media_route_button);
         CastButtonFactory.setUpMediaRouteButton(context.getApplicationContext(), mMediaRouteButton);
-        CastContext castContext = CastContext.getSharedInstance(context);
 
-        if(castContext.getCastState() != CastState.NO_DEVICES_AVAILABLE)
+        //CastContext mCastContext = CastContext.getSharedInstance(context.getApplicationContext());
+        VideoPlayActivity mainActivity = (VideoPlayActivity) this.getActivity();
+        CastContext mCastContext = mainActivity.mCastContext;
+
+      //  Log.v(TAG, "cast: " + mCastContext.getCastState());
+
+        if (mCastContext.getCastState() != CastState.NO_DEVICES_AVAILABLE) {
+        //    Log.v(TAG, "cast: DEVICES_AVAILABLE");
+
             mMediaRouteButton.setVisibility(View.VISIBLE);
+        }
 
-        castContext.addCastStateListener(state -> {
-            if (state == CastState.NO_DEVICES_AVAILABLE)
+        mCastContext.addCastStateListener(state -> {
+            if (state == CastState.NO_DEVICES_AVAILABLE) {
+          //      Log.v(TAG, "cast: NO_DEVICES_AVAILABLE");
                 mMediaRouteButton.setVisibility(View.GONE);
-            else {
-                if (mMediaRouteButton.getVisibility() == View.GONE)
+            } else {
+            //    Log.v(TAG, "cast: DEVICES_AVAILABLE 2");
+
+                if (mMediaRouteButton.getVisibility() == View.GONE) {
                     mMediaRouteButton.setVisibility(View.VISIBLE);
+                }
             }
         });
 
