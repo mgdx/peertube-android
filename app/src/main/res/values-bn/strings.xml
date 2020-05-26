@@ -20,7 +20,7 @@
     <string name="action_bar_title_settings">সেটিং</string>
     <string name="action_bar_title_logout">লগ আউট</string>
     <!-- Bottom navigation bar -->
-    <string name="bottom_nav_title_overview">হোম</string>
+    <string name="bottom_nav_title_discover">হোম</string>
     <string name="bottom_nav_title_trending">"Trending"</string>
     <string name="bottom_nav_title_subscriptions">Subscriptions</string>
     <string name="bottom_nav_title_account">একাউন্ট</string>
@@ -321,4 +321,5 @@
     <string name="server_selection_signup_allowed_yes">হ্যা</string>
     <string name="server_selection_signup_allowed_no">না</string>
     <string name="server_selection_peertube_server_url">পিয়ারটিউব সার্ভার URL</string>
+    <string name="action_bar_title_server_selection">সার্ভার নির্বাচন করুন</string>
 </resources>

@@ -19,7 +19,7 @@
     <string name="action_bar_title_search">Rechercher</string>
     <string name="action_bar_title_settings">Paramètres</string>
     <!-- Bottom navigation bar -->
-    <string name="bottom_nav_title_overview">Accueil</string>
+    <string name="bottom_nav_title_discover">Accueil</string>
     <string name="bottom_nav_title_trending">Tendances</string>
     <string name="bottom_nav_title_subscriptions">Abonnements</string>
     <string name="bottom_nav_title_account">Compte</string>
@@ -115,9 +115,9 @@
     <string name="account_about_subscribers">Abonné·e·s :</string>
     <string name="account_about_description">Description :</string>
     <string name="account_about_joined">Inscrit·e le :</string>
-    <string name="api_error">Quelque chose s’est mal passé, veuillez essayer plus tard !</string>
+    <string name="api_error">Quelque chose s’est mal passé, veuillez essayer plus tard !</string>
     <string name="action_bar_title_server_selection">Sélectionnez un serveur</string>
-    <string name="ab">abkhaze</string>
+    <string name="ab">Abkhaze</string>
     <string name="aa">afar</string>
     <string name="af">afrikaans</string>
     <string name="ak">akan</string>

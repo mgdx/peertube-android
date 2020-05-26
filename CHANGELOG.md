@@ -1,17 +1,27 @@
+### Version 1.0.34 Tag: v1.0.34 (2020-05-16)
+ * Gradle updates
+
+### Version 1.0.33 Tag: v1.0.33 (2020-01-05)
+ * Fixed crashes
+
+### Version 1.0.32 Tag: v1.0.32 (2020-01-04)
+ * Gradle update
+ * Translations
+
 ### Version 1.0.30 Tag: v1.0.30 (2019-08-07)
-* Gradle update
-* Translations
+ * Gradle update
+ * Translations
 
 ### Version 1.0.29 Tag: v1.0.29 (2019-03-03)
-* Prevent entry of bad URL
+ * Prevent entry of bad URL
 
 ### Version 1.0.28 Tag: v1.0.28 (2019-03-03)
-* Server selection
-* Lots of translations
+ * Server selection
+ * Lots of translations
 
 ### Version 1.0.27 Tag: v1.0.27 (2019-02-17)
-* App Rename
-* Lots of translations
+ * App Rename
+ * Lots of translations
 
 ### Version 1.0.26 Tag: v1.0.26 (2019-01-27)
  * Larger fullscreen button target
